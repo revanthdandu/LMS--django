@@ -10,10 +10,10 @@ class Profile(models.Model):
     ]
     YEAR_CHOICE = [
         ('-', '-'),
-        ('B.tech I year', 'B.tech I year'),
-        ('B.tech II year', 'B.tech II year'),
-        ('B.tech III year', 'B.tech III year'),
-        ('B.tech IV year', 'B.tech IV year'),
+        ('I', 'B.tech I year'),
+        ('II', 'B.tech II year'),
+        ('III', 'B.tech III year'),
+        ('IV', 'B.tech IV year'),
     ]
     GENDER_CHOICE = [
         ('-', '-'),
@@ -23,6 +23,7 @@ class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     profilepic = models.ImageField(upload_to='profilepics')
     designation = models.CharField(max_length=50,choices=DESIGNATION_CHOICE,default='student')
+    subject = models.CharField(max_length=200)
     branch = models.CharField(max_length=100)
     section = models.CharField(max_length=15)
     phone = models.CharField(max_length=15)

@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
 
@@ -5,21 +6,52 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Blank Page - Brand</title>
-    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'LMSteacherdashboard/assets/bootstrap/css/bootstrap.min.css'%}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
-    <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
-    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
-    <link rel="stylesheet" href="assets/fonts/fontawesome5-overrides.min.css">
-    <link rel="stylesheet" href="assets/css/Button-modal-ecommerce-1.css">
-    <link rel="stylesheet" href="assets/css/Button-modal-ecommerce.css">
-    <link rel="stylesheet" href="assets/css/Continue-Button.css">
-    <link rel="stylesheet" href="assets/css/Drag-and-Drop-File-Input.css">
-    <link rel="stylesheet" href="assets/css/Drag-Drop-File-Input-Upload.css">
-    <link rel="stylesheet" href="assets/css/Forum---Thread-listing-1.css">
-    <link rel="stylesheet" href="assets/css/Forum---Thread-listing.css">
+    <link rel="stylesheet" href="{% static 'LMSteacherdashboard/assets/fonts/fontawesome-all.min.css'%}">
+    <link rel="stylesheet" href="{% static 'LMSteacherdashboard/assets/fonts/font-awesome.min.css'%}">
+    <link rel="stylesheet" href="{% static 'LMSteacherdashboard/assets/fonts/fontawesome5-overrides.min.css'%}">
+    <link rel="stylesheet" href="{% static 'LMSteacherdashboard/assets/css/Button-modal-ecommerce-1.css'%}">
+    <link rel="stylesheet" href="{% static 'LMSteacherdashboard/assets/css/Button-modal-ecommerce.css'%}">
+    <link rel="stylesheet" href="{% static 'LMSteacherdashboard/assets/css/Continue-Button.css'%}">
+    <link rel="stylesheet" href="{% static 'LMSteacherdashboard/assets/css/Drag-and-Drop-File-Input.css'%}">
+    <link rel="stylesheet" href="{% static 'LMSteacherdashboard/assets/css/Drag-Drop-File-Input-Upload.css'%}">
+    <link rel="stylesheet" href="{% static 'LMSteacherdashboard/assets/css/Forum---Thread-listing-1.css'%}">
+    <link rel="stylesheet" href="{% static 'LMSteacherdashboard/assets/css/Forum---Thread-listing.css'%}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
-    <link rel="stylesheet" href="assets/css/Multi-step-form.css">
-    <link rel="stylesheet" href="assets/css/Pretty-Login-Form.css">
+    <link rel="stylesheet" href="{% static 'LMSteacherdashboard/assets/css/Multi-step-form.css'%}">
+    <link rel="stylesheet" href="{% static 'LMSteacherdashboard/assets/css/Pretty-Login-Form.css'%}">
+    <script>
+        let absent_list = []
+
+        function addAbsentList(event, value){
+
+            if(event.target.checked){
+                absent_list.push(value)
+            }else{
+                absent_list = absent_list.filter(el => el !== value)
+            }
+
+            console.log(absent_list);
+        }
+
+        function submitAttendance(){
+            fetch(window.location.href, {
+                method: "POST",
+                body: JSON.stringify({
+                    absent_list
+                }),
+                credentials: 'include',
+                headers: {
+                    'Content-Type':'application/json'
+                }
+            }).then(res => {
+                    if(res.ok){
+                        window.location.reload();
+                    }
+                })
+        }
+    </script>
 </head>
 
 <body id="page-top">
@@ -30,12 +62,12 @@
                 <ul class="navbar-nav text-light" id="accordionSidebar">
                     <li class="nav-item">
                         <div class="container" style="width: 188px;height: 25px;"></div>
-                        <div class="container d-xl-flex justify-content-xl-start align-items-xl-end" style="margin-right: 0px;padding-left: 13px;"><img class="pulse animated infinite" src="assets/img/looogo.png" style="height: 77px;padding-right: 13px;"><a href="#" style="color: rgb(255,255,255);font-style: normal;font-weight: bold;font-size: 19px;line-height: 69.5px;">THE LMS</a></div>
-                        <div class="container" style="height: 34px;"></div><a class="nav-link" href="dashboard.html"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a>
+                        <div class="container d-xl-flex justify-content-xl-start align-items-xl-end" style="margin-right: 0px;padding-left: 13px;"><img class="pulse animated infinite" src="{% static 'LMSteacherdashboard/assets/img/looogo.png'%}" style="height: 77px;padding-right: 13px;"><a href="#" style="color: rgb(255,255,255);font-style: normal;font-weight: bold;font-size: 19px;line-height: 69.5px;">THE LMS</a></div>
+                        <div class="container" style="height: 34px;"></div><a class="nav-link" href="{% url 'teacherdashboard' %}"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a>
                     </li>
-                    <li class="nav-item"><a class="nav-link" href="profile.html"><i class="fas fa-user"></i><span>Profile</span></a></li>
-                    <li class="nav-item"><a class="nav-link" href="timetable.html"><i class="fas fa-table"></i><span>Time Tables</span></a></li>
-                    <li class="nav-item"><a class="nav-link active" href="attendance.html"><i class="fas fa-window-maximize"></i><span>Attendance</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'profile' %}"><i class="fas fa-user"></i><span>Profile</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'tts' %}"><i class="fas fa-table"></i><span>Time Tables</span></a></li>
+                    <li class="nav-item"><a class="nav-link active" href="{% url 'attendance' %}"><i class="fas fa-window-maximize"></i><span>Attendance</span></a></li>
                     <li class="nav-item"><a class="nav-link" href="subcontrol.html"><i class="fa fa-book"></i><span>Subject control</span></a></li>
                 </ul>
                 <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button></div>
@@ -92,7 +124,7 @@
                                 <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" aria-expanded="false" data-toggle="dropdown" href="#"><span class="badge badge-danger badge-counter">7</span><i class="fas fa-envelope fa-fw"></i></a>
                                     <div class="dropdown-menu dropdown-menu-right dropdown-list animated--grow-in">
                                         <h6 class="dropdown-header">alerts center</h6><a class="dropdown-item d-flex align-items-center" href="#">
-                                            <div class="dropdown-list-image mr-3"><img class="rounded-circle" src="assets/img/avatars/avatar4.jpeg">
+                                            <div class="dropdown-list-image mr-3"><img class="rounded-circle" src="{% static 'LMSteacherdashboard/assets/img/avatars/avatar4.jpeg'%}">
                                                 <div class="bg-success status-indicator"></div>
                                             </div>
                                             <div class="font-weight-bold">
@@ -100,7 +132,7 @@
                                                 <p class="small text-gray-500 mb-0">Emily Fowler - 58m</p>
                                             </div>
                                         </a><a class="dropdown-item d-flex align-items-center" href="#">
-                                            <div class="dropdown-list-image mr-3"><img class="rounded-circle" src="assets/img/avatars/avatar2.jpeg">
+                                            <div class="dropdown-list-image mr-3"><img class="rounded-circle" src="{% static 'LMSteacherdashboard/assets/img/avatars/avatar2.jpeg'%}">
                                                 <div class="status-indicator"></div>
                                             </div>
                                             <div class="font-weight-bold">
@@ -108,7 +140,7 @@
                                                 <p class="small text-gray-500 mb-0">Jae Chun - 1d</p>
                                             </div>
                                         </a><a class="dropdown-item d-flex align-items-center" href="#">
-                                            <div class="dropdown-list-image mr-3"><img class="rounded-circle" src="assets/img/avatars/avatar3.jpeg">
+                                            <div class="dropdown-list-image mr-3"><img class="rounded-circle" src="{% static 'LMSteacherdashboard/assets/img/avatars/avatar3.jpeg'%}">
                                                 <div class="bg-warning status-indicator"></div>
                                             </div>
                                             <div class="font-weight-bold">
@@ -116,7 +148,7 @@
                                                 <p class="small text-gray-500 mb-0">Morgan Alvarez - 2d</p>
                                             </div>
                                         </a><a class="dropdown-item d-flex align-items-center" href="#">
-                                            <div class="dropdown-list-image mr-3"><img class="rounded-circle" src="assets/img/avatars/avatar5.jpeg">
+                                            <div class="dropdown-list-image mr-3"><img class="rounded-circle" src="{% static 'LMSteacherdashboard/assets/img/avatars/avatar5.jpeg'%}">
                                                 <div class="bg-success status-indicator"></div>
                                             </div>
                                             <div class="font-weight-bold">
@@ -130,7 +162,7 @@
                             </li>
                             <div class="d-none d-sm-block topbar-divider"></div>
                             <li class="nav-item dropdown no-arrow">
-                                <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" aria-expanded="false" data-toggle="dropdown" href="#"><span class="d-none d-lg-inline mr-2 text-gray-600 small">Valerie Luna</span><img class="border rounded-circle img-profile" src="assets/img/avatars/avatar1.jpeg"></a>
+                                <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" aria-expanded="false" data-toggle="dropdown" href="#"><span class="d-none d-lg-inline mr-2 text-gray-600 small">Valerie Luna</span><img class="border rounded-circle img-profile" src="{% static 'LMSteacherdashboard/assets/img/avatars/avatar1.jpeg'%}"></a>
                                     <div class="dropdown-menu shadow dropdown-menu-right animated--grow-in"><a class="dropdown-item" href="#"><i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Profile</a><a class="dropdown-item" href="#"><i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Settings</a><a class="dropdown-item" href="#"><i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Activity log</a>
                                         <div class="dropdown-divider"></div><a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Logout</a>
                                     </div>
@@ -148,7 +180,7 @@
                                     <div id="multple-step-form-n" class="container overflow-hidden" style="margin-top: 0px;margin-bottom: 10px;padding-bottom: 300px;padding-top: 57px;">
                                         <div id="multistep-start-row" class="row">
                                             <div id="multistep-start-column" class="col-12 col-lg-8 m-auto">
-                                                <form id="main-form" class="multisteps-form__form">
+                                                <form action="" id="main-form" class="multisteps-form__form">
                                                     <div class="text-nowrap multisteps-form__panel shadow p-4 rounded bg-white js-active" id="single-form-next" data-animation="scaleIn">
                                                         <h3 class="text-center multisteps-form__title">Attendance details</h3>
                                                         <div id="form-content" class="multisteps-form__content">
@@ -160,10 +192,10 @@
                                                         <div id="form-content" class="multisteps-form__content">
                                                             <div id="input-grp-double" class="form-row mt-4">
                                                                 <div class="col-12 col-sm-6"><input class="form-control" type="text" name="hour" placeholder="Hour"></div>
-                                                                <div class="col-12 col-sm-6 mt-4 mt-sm-0"><input class="form-control" type="text" name="section" placeholder="section"></div>
+                                                                <div class="col-12 col-sm-6 mt-4 mt-sm-0"><input class="form-control" name="section" type="text" name="section" placeholder="section"></div>
                                                             </div>
                                                             <div></div>
-                                                            <div id="next-button" class="button-row d-flex mt-4"><button class="btn btn btn-primary ml-auto js-btn-next" type="button" title="Next">Fetch</button></div>
+                                                            <div id="next-button" class="button-row d-flex mt-4"><button class="btn btn btn-primary ml-auto js-btn-next" type="submit" title="Next">Fetch</button></div>
                                                         </div>
                                                     </div>
                                                     <div id="single-form-next-prev" class="multisteps-form__panel shadow p-4 rounded bg-white" data-animation="scaleIn">
@@ -217,18 +249,14 @@
                                             </nav>
                                         </div>
                                         <ul class="thread-list">
-                                            <li class="thread"><span class="text-break title">180330192</span><span class="text-break title" style="margin-left: 28px;">Revanth Dandu</span><span class="d-xl-flex justify-content-xl-start icon"> <a class="subscribe" href="javascript:void(0)">
+                                            {% for att in att_list %}
+                                                <li class="thread"><span class="text-break title">{{att.0}}</span><span class="text-break title" style="margin-left: 28px;">{{att.1}}</span><span class="d-xl-flex justify-content-xl-start icon"> <a class="subscribe" href="javascript:void(0)">
                                                         <div>
-                                                            <!--BEGIN CheckBox totale1--><input type="checkbox" id="sondaggitotale1" value="1" name="{totale1_Name}">
+                                                            <!--BEGIN CheckBox totale1--><input type="checkbox" id="sondaggitotale1" onchange="addAbsentList(event, '{{att.0}}')" name="totale1_Name">
                                                             <!--END CheckBox totale1-->
                                                         </div>
                                                     </a><a class="flag" href="javascript:void(0)"></a></span></li>
-                                            <li class="thread"><span class="text-break title">180330165</span><span class="text-break title" style="margin-left: 28px;">Sruthi Sama</span><span class="d-xl-flex justify-content-xl-start icon"> <a class="subscribe" href="javascript:void(0)">
-                                                        <div>
-                                                            <!--BEGIN CheckBox totale1--><input type="checkbox" id="sondaggitotale-1" value="1" name="{totale1_Name}">
-                                                            <!--END CheckBox totale1-->
-                                                        </div>
-                                                    </a><a class="flag" href="javascript:void(0)"></a></span></li>
+                                            {% endfor %}
                                         </ul>
                                     </div>
                                     <div class="tab-pane" role="tabpanel" id="tab-2"></div>
@@ -239,19 +267,19 @@
                         </div>
                     </div>
                 </div>
-                <div class="container d-xl-flex justify-content-xl-end"><button class="btn btn-success btn-icon-split" type="button"><span class="text-white-50 icon"><i class="fas fa-check"></i></span><span class="text-white text">SUBMIT</span></button></div>
+                <div class="container d-xl-flex justify-content-xl-end"><button class="btn btn-success btn-icon-split" onclick="submitAttendance()" type="button"><span class="text-white-50 icon"><i class="fas fa-check"></i></span><span class="text-white text">SUBMIT</span></button></div>
                 <div class="container" style="margin-top: 66px;"></div>
             </div>
         </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
     </div>
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="assets/js/bs-init.js"></script>
-    <script src="assets/js/Button-modal-ecommerce.js"></script>
-    <script src="assets/js/Drag-and-Drop-File-Input.js"></script>
+    <script src="{% static 'LMSteacherdashboard/assets/js/jquery.min.js'%}"></script>
+    <script src="{% static 'LMSteacherdashboard/assets/bootstrap/js/bootstrap.min.js'%}"></script>
+    <script src="{% static 'LMSteacherdashboard/assets/js/bs-init.js'%}"></script>
+    <script src="{% static 'LMSteacherdashboard/assets/js/Button-modal-ecommerce.js'%}"></script>
+    <script src="{% static 'LMSteacherdashboard/assets/js/Drag-and-Drop-File-Input.js'%}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js"></script>
-    <script src="assets/js/Multi-step-form.js"></script>
-    <script src="assets/js/theme.js"></script>
+    <script src="{% static 'LMSteacherdashboard/assets/js/Multi-step-form.js'%}"></script>
+    <script src="{% static 'LMSteacherdashboard/assets/js/theme.js'%}"></script>
 </body>
 
 </html>

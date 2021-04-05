@@ -2,6 +2,6 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('', views.attendence_sheet, name="attendance"),
+    # path('', views.ExcelAttendance.as_view(), name="attendance"),
 
 ]
