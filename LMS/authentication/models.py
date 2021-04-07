@@ -35,3 +35,6 @@ class Profile(models.Model):
     address = models.TextField()
     city = models.CharField(max_length=200)
 
+    def __str__(self):
+        return f"{self.user.username}"
+

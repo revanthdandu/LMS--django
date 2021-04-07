@@ -25,6 +25,7 @@ urlpatterns = [
     path('todo/', include('todo.urls')),
     path('timetables/', include('timetables.urls')),
     path('attendance/', include('createfolder.urls')),
+    path('subjectcontrol/', include('subjectcontrol.urls')),
 ]
 
 if settings.DEBUG:

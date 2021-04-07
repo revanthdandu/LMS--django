@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'todo',
     'timetables',
     'createfolder',
+    'subjectcontrol',
 ]
 
 MIDDLEWARE = [
