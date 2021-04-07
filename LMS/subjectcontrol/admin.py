@@ -1,14 +1,24 @@
 from django.contrib import admin
-from .models import SubjectControl, SubjectFiles
+from .models import Notes, NotesFiles
+from .models import Assignments, AssignmentsFiles
 
 # admin.site.register(SubjectControl)
 # admin.site.register(SubjectFiles)
 
-class SubjectFilesAdmin(admin.TabularInline):
-    model = SubjectFiles
+class NotesFilesAdmin(admin.TabularInline):
+    model = NotesFiles
 
-class SubjectControlAdmin(admin.ModelAdmin):
+class NotesAdmin(admin.ModelAdmin):
     # list_display = '__all__'
-    inlines = [SubjectFilesAdmin,]
+    inlines = [NotesFilesAdmin]
 
-admin.site.register(SubjectControl, SubjectControlAdmin)
+admin.site.register(Notes, NotesAdmin)
+
+
+class AssignmentsFilesAdmin(admin.TabularInline):
+    model = AssignmentsFiles
+
+class AssignmentsAdmin(admin.ModelAdmin):
+    inlines = [AssignmentsFilesAdmin]
+
+admin.site.register(Assignments, AssignmentsAdmin)

@@ -170,7 +170,7 @@
                                         </div>
                                         <div class="collapse item-{{subject_control.id}}" role="tabpanel" data-parent="#accordion-1">
                                             <div class="card-body">
-                                                <div class="d-xl-flex justify-content-xl-end"><a href="addfiles.html">add new file</a>
+                                                <div class="d-xl-flex justify-content-xl-end"><a href="{% url 'fileupload' pk=subject_control.id %}">add new file</a>
                                                     <div class="modal fade" role="dialog" tabindex="-1" id="myuploadModal">
                                                         <div class="modal-dialog" role="document">
                                                             <div class="modal-content">
@@ -217,18 +217,21 @@
                                                 <div class="modal-header">
                                                     <h4>ADD NEW COLUMN</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
                                                 </div>
-                                                <div class="modal-body"><input type="text" name="assignmentcolumnname" placeholder="Column Name"></div>
+                                                <form action="" method="post"> {% csrf_token %}
+                                                <div class="modal-body"><input type="text" name="assignmentscolumnname" placeholder="Column Name"></div>
                                                 <div class="modal-footer"><button class="btn btn-light" data-dismiss="modal" type="button">Close</button><button class="btn btn-primary" type="submit">Save</button></div>
+                                                </form>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div role="tablist" id="accordion-2">
+                                    {% for assignments in assignments_upload_list %}
                                     <div class="card">
                                         <div class="card-header" role="tab">
-                                            <h5 class="mb-0"><a data-toggle="collapse" aria-expanded="true" aria-controls="accordion-2 .item-1" href="#accordion-2 .item-1">Assignment -1</a></h5>
+                                            <h5 class="mb-0"><a data-toggle="collapse" aria-expanded="true" aria-controls="accordion-2 .item-{{assignments.id}}" href="#accordion-2 .item-{{assignments.id}}">{{assignments.name}}</a></h5>
                                         </div>
-                                        <div class="collapse show item-1" role="tabpanel" data-parent="#accordion-2">
+                                        <div class="collapse show item-{{assignments.id}}" role="tabpanel" data-parent="#accordion-2">
                                             <div class="card-body">
                                                 <div class="d-xl-flex justify-content-xl-end"><a href="#">add new file</a>
                                                     <div class="modal fade" role="dialog" tabindex="-1" id="myuploadModal-4">
@@ -250,79 +253,15 @@
                                                 <div id="Bullets-4">
                                                     <h5 id="titulo-5" class="c-titulo5">Upper decription<br></h5>
                                                     <ul class="c-bullets">
-                                                        <li><a href="#">theory of relativity</a></li>
-                                                        <li><a href="#">nen cheppa</a></li>
+                                                        {% for assignments in assignments.assignments_upload_list.all %}
+                                                        <li><a href="{{assignments.file.url}}">{{assignments.name}}</a></li>
+                                                        {% endfor %}
                                                     </ul>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="card">
-                                        <div class="card-header" role="tab">
-                                            <h5 class="mb-0"><a data-toggle="collapse" aria-expanded="false" aria-controls="accordion-2 .item-2" href="#accordion-2 .item-2">Assignment -2</a></h5>
-                                        </div>
-                                        <div class="collapse item-2" role="tabpanel" data-parent="#accordion-2">
-                                            <div class="card-body">
-                                                <div class="d-xl-flex justify-content-xl-end"><a href="#">add new file</a>
-                                                    <div class="modal fade" role="dialog" tabindex="-1" id="myuploadModal-2">
-                                                        <div class="modal-dialog" role="document">
-                                                            <div class="modal-content">
-                                                                <div class="modal-header">
-                                                                    <h4>UPLOAD FILES</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-                                                                </div>
-                                                                <div class="modal-body">
-                                                                    <div class="form-group">
-                                                                        <div class="file-drop-area"><span class="fake-btn">Choose files</span><span class="file-msg">or drag and drop files here</span><input type="file" class="file-input"></div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="modal-footer"><button class="btn btn-light" data-dismiss="modal" type="button">Close</button><button class="btn btn-primary" type="button">Save</button></div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div id="Bullets-3">
-                                                    <h5 id="titulo-2" class="c-titulo5">Upper decription<br></h5>
-                                                    <ul class="c-bullets">
-                                                        <li><a href="#">theory of relativity</a></li>
-                                                        <li><a href="#">nen cheppa</a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="card">
-                                        <div class="card-header" role="tab">
-                                            <h5 class="mb-0"><a data-toggle="collapse" aria-expanded="false" aria-controls="accordion-2 .item-3" href="#accordion-2 .item-3">Assignment -3</a></h5>
-                                        </div>
-                                        <div class="collapse item-3" role="tabpanel" data-parent="#accordion-2">
-                                            <div class="card-body">
-                                                <div class="d-xl-flex justify-content-xl-end"><a href="#">add new file</a>
-                                                    <div class="modal fade" role="dialog" tabindex="-1" id="myuploadModal-4">
-                                                        <div class="modal-dialog" role="document">
-                                                            <div class="modal-content">
-                                                                <div class="modal-header">
-                                                                    <h4>UPLOAD FILES</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-                                                                </div>
-                                                                <div class="modal-body">
-                                                                    <div class="form-group">
-                                                                        <div class="file-drop-area"><span class="fake-btn">Choose files</span><span class="file-msg">or drag and drop files here</span><input type="file" class="file-input"></div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="modal-footer"><button class="btn btn-light" data-dismiss="modal" type="button">Close</button><button class="btn btn-primary" type="button">Save</button></div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div id="Bullets-4">
-                                                    <h5 id="titulo-5" class="c-titulo5">Upper decription<br></h5>
-                                                    <ul class="c-bullets">
-                                                        <li><a href="#">theory of relativity</a></li>
-                                                        <li><a href="#">nen cheppa</a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    {% endfor %}
                                 </div>
                             </div>
                         </div>
