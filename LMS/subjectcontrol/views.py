@@ -1,7 +1,4 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponse, HttpResponseRedirect
-from django.contrib.auth.models import User
-from django.contrib.auth import authenticate, login, logout
 from django.views import View
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Notes, NotesFiles
@@ -31,14 +28,14 @@ class Subjectcontrol(LoginRequiredMixin, View):
 
 
 
-class Assignments(LoginRequiredMixin, View):
+class AssignmentsView(LoginRequiredMixin, View):
 
     login_url = ''
     redirect_field_name = 'redirect_to'
 
-    def get(self, request):
-        assignments_upload_list = request.user.profile.assignments_upload_list.all()
-        return render(request, 'LMSteacherdashboard/subcontrol.html', {'assignments_upload_list':assignments_upload_list})
+    # def get(self, request):
+    #     assignments_upload_list = request.user.profile.assignments_upload_list.all()
+    #     return render(request, 'LMSteacherdashboard/subcontrol.html', {'assignments_upload_list':assignments_upload_list})
 
     def post(self, request):
         columnname=request.POST['assignmentscolumnname']
@@ -47,13 +44,13 @@ class Assignments(LoginRequiredMixin, View):
             name = columnname
         )
 
-        return redirect('uploadassignment')
+        return redirect('subjectcontrol')
 
 
 
 
 
-class FileUpload(LoginRequiredMixin, View):
+class NotesUpload(LoginRequiredMixin, View):
 
 
     login_url = ''
@@ -64,11 +61,12 @@ class FileUpload(LoginRequiredMixin, View):
 
     def post(self, request, pk):
         subject_control = Notes.objects.get(id=pk)
+        subject_filename = request.POST['subject_filename']
         file = request.FILES['subject_file']
         NotesFiles.objects.create(
             subject_control=subject_control,
             file=file,
-            name="Revanth",
+            name=subject_filename,
         )
 
         return redirect('subjectcontrol')

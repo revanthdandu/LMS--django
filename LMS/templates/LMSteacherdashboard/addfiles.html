@@ -130,8 +130,9 @@
         </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
     </div>
     <form action="" method="post" enctype="multipart/form-data">{% csrf_token %}
-    <div class="container"><small class="form-text text-muted" style="font-size: 32.8px;text-align: center;margin-bottom: 31px;">drag and drop the file ehich you want to add</small></div>
+    <div class="container"><small class="form-text text-muted" style="font-size: 32.8px;text-align: center;margin-bottom: 31px;">drag and drop the file which you want to add</small></div>
     <div class="container">
+        <input type="text" name="subject_filename" placeholder="filename"><br><br>
         <div class="form-group files color"><input type="file" name="subject_file"></div>
     </div>
     <div class="container d-xl-flex justify-content-xl-end"><button type="submit" class="btn btn-warning btn-icon-split" role="button"><span class="text-white-50 icon"><i class="fas fa-plus"></i></span><span class="text-white text">add this file</span></button></div>

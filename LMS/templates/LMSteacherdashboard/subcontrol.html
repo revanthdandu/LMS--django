@@ -170,7 +170,7 @@
                                         </div>
                                         <div class="collapse item-{{subject_control.id}}" role="tabpanel" data-parent="#accordion-1">
                                             <div class="card-body">
-                                                <div class="d-xl-flex justify-content-xl-end"><a href="{% url 'fileupload' pk=subject_control.id %}">add new file</a>
+                                                <div class="d-xl-flex justify-content-xl-end"><a href="{% url 'notesupload' pk=subject_control.id %}">add new file</a>
                                                     <div class="modal fade" role="dialog" tabindex="-1" id="myuploadModal">
                                                         <div class="modal-dialog" role="document">
                                                             <div class="modal-content">
@@ -188,10 +188,14 @@
                                                     </div>
                                                 </div>
                                                 <div id="Bullets">
+                                                    <a href="#" >add description</a>
                                                     <h5 id="titulo-4" class="c-titulo5">Upper decription<br></h5>
                                                     <ul class="c-bullets">
                                                         {% for sub_file in subject_control.subject_files_list.all %}
-                                                         <li><a href="{{sub_file.file.url}}" target="_blank">{{sub_file.name}}</a></li>
+                                                         <li>
+                                                             <a href="{{sub_file.file.url}}" target="_blank">{{sub_file.name}}</a>
+                                                             <a href="#" >DELETE</a>
+                                                         </li>
                                                         {% endfor %}
                                                     </ul>
                                                 </div>
@@ -217,7 +221,7 @@
                                                 <div class="modal-header">
                                                     <h4>ADD NEW COLUMN</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
                                                 </div>
-                                                <form action="" method="post"> {% csrf_token %}
+                                                <form action="{% url 'uploadassignment' %}" method="post"> {% csrf_token %}
                                                 <div class="modal-body"><input type="text" name="assignmentscolumnname" placeholder="Column Name"></div>
                                                 <div class="modal-footer"><button class="btn btn-light" data-dismiss="modal" type="button">Close</button><button class="btn btn-primary" type="submit">Save</button></div>
                                                 </form>
