@@ -1,4 +1,3 @@
-{% load static %}
 <!DOCTYPE html>
 <html>
 
@@ -6,69 +5,31 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Blank Page - Brand</title>
-    <link rel="stylesheet" href="{% static 'LMSteacherdashboard/assets/bootstrap/css/bootstrap.min.css'%}">
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
-    <link rel="stylesheet" href="{% static 'LMSteacherdashboard/assets/fonts/fontawesome-all.min.css'%}">
-    <link rel="stylesheet" href="{% static 'LMSteacherdashboard/assets/fonts/font-awesome.min.css'%}">
-    <link rel="stylesheet" href="{% static 'LMSteacherdashboard/assets/fonts/fontawesome5-overrides.min.css'%}">
-    <link rel="stylesheet" href="{% static 'LMSteacherdashboard/assets/css/Button-modal-ecommerce-1.css'%}">
-    <link rel="stylesheet" href="{% static 'LMSteacherdashboard/assets/css/Button-modal-ecommerce.css'%}">
-    <link rel="stylesheet" href="{% static 'LMSteacherdashboard/assets/css/Continue-Button.css'%}">
-    <link rel="stylesheet" href="{% static 'LMSteacherdashboard/assets/css/Drag-and-Drop-File-Input.css'%}">
-    <link rel="stylesheet" href="{% static 'LMSteacherdashboard/assets/css/Drag-Drop-File-Input-Upload.css'%}">
-    <link rel="stylesheet" href="{% static 'LMSteacherdashboard/assets/css/Forum---Thread-listing-1.css'%}">
-    <link rel="stylesheet" href="{% static 'LMSteacherdashboard/assets/css/Forum---Thread-listing.css'%}">
+    <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
+    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/fonts/fontawesome5-overrides.min.css">
+    <link rel="stylesheet" href="assets/css/circle-progress-bar.css">
+    <link rel="stylesheet" href="assets/css/divider-text-middle.css">
+    <link rel="stylesheet" href="assets/css/Drag-and-Drop-Multiple-File-Form-Input-upload-Advanced.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
-    <link rel="stylesheet" href="{% static 'LMSteacherdashboard/assets/css/Multi-step-form.css'%}">
-    <link rel="stylesheet" href="{% static 'LMSteacherdashboard/assets/css/Pretty-Login-Form.css'%}">
-    <script>
-        let absent_list = []
-
-        function addAbsentList(event, value){
-
-            if(event.target.checked){
-                absent_list.push(value)
-            }else{
-                absent_list = absent_list.filter(el => el !== value)
-            }
-
-            console.log(absent_list);
-        }
-
-        function submitAttendance(){
-            fetch(window.location.href, {
-                method: "POST",
-                body: JSON.stringify({
-                    absent_list
-                }),
-                credentials: 'include',
-                headers: {
-                    'Content-Type':'application/json'
-                }
-            }).then(res => {
-                    if(res.ok){
-                        window.location.reload();
-                    }
-                })
-        }
-    </script>
+    <link rel="stylesheet" href="assets/css/Multi-step-form.css">
 </head>
 
 <body id="page-top">
     <div id="wrapper">
         <nav class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0">
-            <div class="container-fluid d-flex flex-column p-0">
+            <div class="container-fluid d-flex flex-column p-0"><img class="pulse animated infinite" src="assets/img/looogo.png" style="width: 90px;margin-top: 12px;"><a class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="#">
+                    <div class="sidebar-brand-icon rotate-n-15"></div>
+                    <div class="sidebar-brand-text mx-3"><span>the lms</span></div>
+                </a>
                 <hr class="sidebar-divider my-0">
                 <ul class="navbar-nav text-light" id="accordionSidebar">
-                    <li class="nav-item">
-                        <div class="container" style="width: 188px;height: 25px;"></div>
-                        <div class="container d-xl-flex justify-content-xl-start align-items-xl-end" style="margin-right: 0px;padding-left: 13px;"><img class="pulse animated infinite" src="{% static 'LMSteacherdashboard/assets/img/looogo.png'%}" style="height: 77px;padding-right: 13px;"><a href="#" style="color: rgb(255,255,255);font-style: normal;font-weight: bold;font-size: 19px;line-height: 69.5px;">THE LMS</a></div>
-                        <div class="container" style="height: 34px;"></div><a class="nav-link" href="{% url 'teacherdashboard' %}"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a>
-                    </li>
-                    <li class="nav-item"><a class="nav-link" href="{% url 'profile' %}"><i class="fas fa-user"></i><span>Profile</span></a></li>
-                    <li class="nav-item"><a class="nav-link" href="{% url 'tts' %}"><i class="fas fa-table"></i><span>Time Tables</span></a></li>
-                    <li class="nav-item"><a class="nav-link active" href="{% url 'attendance' %}"><i class="fas fa-window-maximize"></i><span>Attendance</span></a></li>
-                    <li class="nav-item"><a class="nav-link" href="{% url 'subjectcontrol' %}"><i class="fa fa-book"></i><span>Subject control</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="dashboard.html"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="profile.html"><i class="fas fa-user"></i><span>Profile</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="timetable.html"><i class="fas fa-table"></i><span>Timetables</span></a></li>
+                    <li class="nav-item"><a class="nav-link active" href="Attendance.html"><i class="fa fa-align-left"></i><span>Attendance</span></a></li>
                 </ul>
                 <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button></div>
             </div>
@@ -124,7 +85,7 @@
                                 <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" aria-expanded="false" data-toggle="dropdown" href="#"><span class="badge badge-danger badge-counter">7</span><i class="fas fa-envelope fa-fw"></i></a>
                                     <div class="dropdown-menu dropdown-menu-right dropdown-list animated--grow-in">
                                         <h6 class="dropdown-header">alerts center</h6><a class="dropdown-item d-flex align-items-center" href="#">
-                                            <div class="dropdown-list-image mr-3"><img class="rounded-circle" src="{% static 'LMSteacherdashboard/assets/img/avatars/avatar4.jpeg'%}">
+                                            <div class="dropdown-list-image mr-3"><img class="rounded-circle" src="assets/img/avatars/avatar4.jpeg">
                                                 <div class="bg-success status-indicator"></div>
                                             </div>
                                             <div class="font-weight-bold">
@@ -132,7 +93,7 @@
                                                 <p class="small text-gray-500 mb-0">Emily Fowler - 58m</p>
                                             </div>
                                         </a><a class="dropdown-item d-flex align-items-center" href="#">
-                                            <div class="dropdown-list-image mr-3"><img class="rounded-circle" src="{% static 'LMSteacherdashboard/assets/img/avatars/avatar2.jpeg'%}">
+                                            <div class="dropdown-list-image mr-3"><img class="rounded-circle" src="assets/img/avatars/avatar2.jpeg">
                                                 <div class="status-indicator"></div>
                                             </div>
                                             <div class="font-weight-bold">
@@ -140,7 +101,7 @@
                                                 <p class="small text-gray-500 mb-0">Jae Chun - 1d</p>
                                             </div>
                                         </a><a class="dropdown-item d-flex align-items-center" href="#">
-                                            <div class="dropdown-list-image mr-3"><img class="rounded-circle" src="{% static 'LMSteacherdashboard/assets/img/avatars/avatar3.jpeg'%}">
+                                            <div class="dropdown-list-image mr-3"><img class="rounded-circle" src="assets/img/avatars/avatar3.jpeg">
                                                 <div class="bg-warning status-indicator"></div>
                                             </div>
                                             <div class="font-weight-bold">
@@ -148,7 +109,7 @@
                                                 <p class="small text-gray-500 mb-0">Morgan Alvarez - 2d</p>
                                             </div>
                                         </a><a class="dropdown-item d-flex align-items-center" href="#">
-                                            <div class="dropdown-list-image mr-3"><img class="rounded-circle" src="{% static 'LMSteacherdashboard/assets/img/avatars/avatar5.jpeg'%}">
+                                            <div class="dropdown-list-image mr-3"><img class="rounded-circle" src="assets/img/avatars/avatar5.jpeg">
                                                 <div class="bg-success status-indicator"></div>
                                             </div>
                                             <div class="font-weight-bold">
@@ -162,14 +123,9 @@
                             </li>
                             <div class="d-none d-sm-block topbar-divider"></div>
                             <li class="nav-item dropdown no-arrow">
-                                <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" aria-expanded="false" data-toggle="dropdown" href="#"><span class="d-none d-lg-inline mr-2 text-gray-600 small">{{user.username}}</span>
-                                {% if user.profile.profilepic %}
-                                    <img class="border rounded-circle img-profile" src="{{user.profile.profilepic.url}}"></a>
-                                    {% else %}
-                                    <img class="border rounded-circle img-profile" src="https://www.clipartmax.com/png/middle/171-1717870_stockvader-predicted-cron-for-may-user-profile-icon-png.png"></a>
-                                    {% endif %}
+                                <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" aria-expanded="false" data-toggle="dropdown" href="#"><span class="d-none d-lg-inline mr-2 text-gray-600 small">Valerie Luna</span><img class="border rounded-circle img-profile" src="assets/img/avatars/avatar1.jpeg"></a>
                                     <div class="dropdown-menu shadow dropdown-menu-right animated--grow-in"><a class="dropdown-item" href="#"><i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Profile</a><a class="dropdown-item" href="#"><i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Settings</a><a class="dropdown-item" href="#"><i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Activity log</a>
-                                        <div class="dropdown-divider"></div><a class="dropdown-item" href="{% url 'logout' %}"><i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Logout</a>
+                                        <div class="dropdown-divider"></div><a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Logout</a>
                                     </div>
                                 </div>
                             </li>
@@ -178,42 +134,43 @@
                 </nav>
                 <div class="container-fluid">
                     <h3 class="text-dark mb-1">Attendance</h3>
-                    <div class="shadow card"><a class="btn btn-link text-left card-header font-weight-bold" data-toggle="collapse" aria-expanded="true" aria-controls="collapse-4" href="#collapse-4" role="button">Attendance info</a>
+                </div>
+                <div class="container" style="margin-top: 15px;">
+                    <div class="shadow card"><a class="btn btn-link text-left card-header font-weight-bold" data-toggle="collapse" aria-expanded="true" aria-controls="collapse-4" href="#collapse-4" role="button">Attendance Register</a>
                         <div class="collapse show" id="collapse-4">
                             <div class="card-body">
                                 <section>
-                                    <div id="multple-step-form-n" class="container overflow-hidden" style="margin-top: 0px;margin-bottom: 10px;padding-bottom: 300px;padding-top: 57px;">
+                                    <div id="multple-step-form-n" class="container overflow-hidden" style="margin-top: 0px;margin-bottom: 10px;padding-bottom: 300px;padding-top: 15px;padding-right: 15px;padding-left: 15px;">
                                         <div id="multistep-start-row" class="row">
                                             <div id="multistep-start-column" class="col-12 col-lg-8 m-auto">
-                                                <form action="" id="main-form" class="multisteps-form__form">
-                                                    <div class="text-nowrap multisteps-form__panel shadow p-4 rounded bg-white js-active" id="single-form-next" data-animation="scaleIn">
-                                                        <h3 class="text-center multisteps-form__title">Attendance details</h3>
+                                                <form id="main-form" class="multisteps-form__form">
+                                                    <div id="single-form-next" class="multisteps-form__panel shadow p-4 rounded bg-white js-active" data-animation="scaleIn">
                                                         <div id="form-content" class="multisteps-form__content">
                                                             <div id="input-grp-double" class="form-row mt-4">
-                                                                <div class="col-12 col-sm-6"><input class="form-control" type="date" name="date"></div>
-                                                                <div class="col-12 col-sm-6 mt-4 mt-sm-0"><input class="form-control" type="time" name="time"></div>
+                                                                <div class="col-12"><form class="form-inline">
+  <div class="form-group">
+    <label >Academic Year</label>
+     <select  class="form-control" >
+         <option>SELECT ACADEMIC YEAR</option>
+         <option>Option1</option>
+         <option>Option2</option>
+      </select>
+  </div>
+</form></div>
                                                             </div>
-                                                        </div>
-                                                        <div id="form-content" class="multisteps-form__content">
-                                                            <div id="input-grp-double" class="form-row mt-4">
-                                                                <div class="col-12 col-sm-6"><input class="form-control" type="text" name="hour" placeholder="Hour"></div>
-                                                                <div class="col-12 col-sm-6 mt-4 mt-sm-0"><input class="form-control" name="section" type="text" name="section" placeholder="section"></div>
-                                                            </div>
-                                                            <div></div>
-                                                            <div id="next-button" class="button-row d-flex mt-4"><button class="btn btn btn-primary ml-auto js-btn-next" type="submit" title="Next">Fetch</button></div>
-                                                        </div>
-                                                    </div>
-                                                    <div id="single-form-next-prev" class="multisteps-form__panel shadow p-4 rounded bg-white" data-animation="scaleIn">
-                                                        <h3 class="text-center multisteps-form__title">About</h3>
-                                                        <div id="form-content-1" class="multisteps-form__content">
                                                             <div id="input-grp-double-1" class="form-row mt-4">
-                                                                <div class="col-12 col-sm-6"><input class="form-control multisteps-form__input" type="text" placeholder="First name "></div>
-                                                                <div class="col-12 col-sm-6 mt-4 mt-sm-0"><input class="form-control multisteps-form__input" type="text" placeholder="Last name "></div>
+                                                                <div class="col-12"><form class="form-inline">
+  <div class="form-group">
+  
+     <select  class="form-control" >
+         <option>SELECT SEMESTER</option>
+         <option>EVEN SEMESTER</option>
+         <option>ODD SEMESTER</option>
+      </select>
+  </div>
+</form></div>
                                                             </div>
-                                                            <div id="input-grp-single-1" class="form-row mt-4">
-                                                                <div class="col-12"><input class="form-control multisteps-form__input" type="text" placeholder="House"></div>
-                                                            </div>
-                                                            <div id="next-prev-buttons" class="button-row d-flex mt-4"><button class="btn btn btn-primary js-btn-prev" type="button" title="Prev">Prev</button><button class="btn btn btn-primary ml-auto js-btn-next" type="button" title="Next">Next</button></div>
+                                                            <div id="next-button" class="button-row d-flex mt-4"><button class="btn btn btn-primary ml-auto js-btn-next" type="button" title="Next" style="margin-right: 12px;">Search</button><button class="btn btn-primary" type="reset" style="background: #ffffff;color: rgb(8,8,8);">Reset</button></div>
                                                         </div>
                                                     </div>
                                                     <div id="single-form-next-prev-1" class="multisteps-form__panel shadow p-4 rounded bg-white" data-animation="scaleIn">
@@ -238,53 +195,93 @@
                         </div>
                     </div>
                 </div>
-                <div class="container" style="margin-top: 39px;"></div>
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div>
-                                <ul class="nav nav-tabs" role="tablist">
-                                    <li class="nav-item" role="presentation"><a class="nav-link active" role="tab" data-toggle="tab" href="#tab-1">25 march,2021&nbsp; H3&nbsp;</a></li>
-                                </ul>
-                                <div class="tab-content">
-                                    <div class="tab-pane active" role="tabpanel" id="tab-1">
-                                        <div class="thread-list-head">
-                                            <nav class="thread-pages">
-                                                <ul class="pagination"></ul>
-                                            </nav>
-                                        </div>
-                                        <ul class="thread-list">
-                                            {% for att in att_list %}
-                                                <li class="thread"><span class="text-break title">{{att.0}}</span><span class="text-break title" style="margin-left: 28px;">{{att.1}}</span><span class="d-xl-flex justify-content-xl-start icon"> <a class="subscribe" href="javascript:void(0)">
-                                                        <div>
-                                                            <!--BEGIN CheckBox totale1--><input type="checkbox" id="sondaggitotale1" onchange="addAbsentList(event, '{{att.0}}')" name="totale1_Name">
-                                                            <!--END CheckBox totale1-->
+                <div class="container" style="margin-top: 50px;">
+                    <div class="table-bordered border rounded shadow" style="margin-bottom: 100px;">
+                        <table class="table table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Subject Name</th>
+                                    <th>Total Classes</th>
+                                    <th>Attended</th>
+                                    <th>Absent</th>
+                                    <th>Percentage</th>
+                                    <th>Check</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Cell 1</td>
+                                    <td>Cell 2</td>
+                                    <td>Cell 2</td>
+                                    <td>Cell 2</td>
+                                    <td>74%</td>
+                                    <td><a href="#"></a>
+                                        <div class="d-xl-flex justify-content-xl-center" style="height: 21.6px;"><a class="btn btn-link" role="button" data-toggle="modal" data-target="#modalLogin" href="#" style="padding: 0px;border-radius: 200px;"><i class="fa fa-eye" style="font-size: 22px;"></i></a>
+                                            <div class="modal fade" role="dialog" tabindex="-1" id="modalLogin">
+                                                <div class="modal-dialog" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h3 class="modal-title text-primary"><i class="fa fa-edit"></i>&nbsp;Daily Attendance</h3><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
                                                         </div>
-                                                    </a><a class="flag" href="javascript:void(0)"></a></span></li>
-                                            {% endfor %}
-                                        </ul>
-                                    </div>
-                                    <div class="tab-pane" role="tabpanel" id="tab-2"></div>
-                                    <div class="tab-pane" role="tabpanel" id="tab-3"></div>
-                                    <div class="tab-pane" role="tabpanel" id="tab-4"></div>
-                                </div>
-                            </div>
-                        </div>
+                                                        <div class="modal-body">
+                                                            <div class="row">
+                                                                <div class="col">
+                                                                    <div class="table-responsive">
+                                                                        <table class="table">
+                                                                            <thead>
+                                                                                <tr>
+                                                                                    <th class="text-nowrap text-center">Student ID</th>
+                                                                                    <th class="text-nowrap text-center">Name</th>
+                                                                                    <th class="text-nowrap text-center">15-03-2021/11:35PM/H3</th>
+                                                                                    <th class="text-nowrap text-center"><strong>21-03-2021/11:35PM/H3</strong><br></th>
+                                                                                    <th class="text-nowrap text-center">Column 2</th>
+                                                                                    <th class="text-nowrap text-center">Column 2</th>
+                                                                                </tr>
+                                                                            </thead>
+                                                                            <tbody>
+                                                                                <tr>
+                                                                                    <td class="text-nowrap text-center">180330192</td>
+                                                                                    <td class="text-nowrap text-center">Revanth Dandu</td>
+                                                                                    <td class="text-nowrap text-center">P</td>
+                                                                                    <td class="text-nowrap text-center">A</td>
+                                                                                    <td class="text-nowrap text-center">Revanth Dandu</td>
+                                                                                    <td class="text-nowrap text-center">Revanth Dandu</td>
+                                                                                </tr>
+                                                                                <tr></tr>
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Cell 3</td>
+                                    <td>Cell 4</td>
+                                    <td>Cell 4</td>
+                                    <td>Cell 4</td>
+                                    <td>80%</td>
+                                    <td>Cell 4</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
-                <div class="container d-xl-flex justify-content-xl-end"><button class="btn btn-success btn-icon-split" onclick="submitAttendance()" type="button"><span class="text-white-50 icon"><i class="fas fa-check"></i></span><span class="text-white text">SUBMIT</span></button></div>
-                <div class="container" style="margin-top: 66px;"></div>
             </div>
         </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
     </div>
-    <script src="{% static 'LMSteacherdashboard/assets/js/jquery.min.js'%}"></script>
-    <script src="{% static 'LMSteacherdashboard/assets/bootstrap/js/bootstrap.min.js'%}"></script>
-    <script src="{% static 'LMSteacherdashboard/assets/js/bs-init.js'%}"></script>
-    <script src="{% static 'LMSteacherdashboard/assets/js/Button-modal-ecommerce.js'%}"></script>
-    <script src="{% static 'LMSteacherdashboard/assets/js/Drag-and-Drop-File-Input.js'%}"></script>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/bs-init.js"></script>
+    <script src="assets/js/Drag-and-Drop-Multiple-File-Form-Input-upload-Advanced.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js"></script>
-    <script src="{% static 'LMSteacherdashboard/assets/js/Multi-step-form.js'%}"></script>
-    <script src="{% static 'LMSteacherdashboard/assets/js/theme.js'%}"></script>
+    <script src="assets/js/Multi-step-form.js"></script>
+    <script src="assets/js/theme.js"></script>
 </body>
 
 </html>

@@ -22,6 +22,8 @@ class Attendance(models.Model):
     YEAR_CHOICES = [
         ('I', 'B.Tech 1'),
         ('II', 'B.Tech 2'),
+        ('III', 'B.Tech 3'),
+        ('IV', 'B.Tech 4'),
     ]
 
     year = models.CharField(max_length=100, choices=YEAR_CHOICES, default='I')

@@ -124,110 +124,21 @@
                     </div>
                 </nav>
                 <div class="container-fluid">
-                    <h3 class="text-dark mb-1">CREATE QUIZ</h3>
+                    <h3 class="text-dark mb-1">add new file&nbsp;</h3>
                 </div>
             </div>
         </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
     </div>
+    <form action="" method="post" enctype="multipart/form-data">{% csrf_token %}
+    <div class="container"><small class="form-text text-muted" style="font-size: 32.8px;text-align: center;margin-bottom: 31px;">drag and drop the file which you want to add</small></div>
     <div class="container">
-        <section>
-            <div id="multple-step-form-n" class="container overflow-hidden" style="margin-top: 0px;margin-bottom: 10px;padding-bottom: 300px;padding-top: 57px;">
-                <div id="progress-bar-button" class="multisteps-form"></div>
-                <div id="multistep-start-row" class="row">
-                    <div id="multistep-start-column" class="col-12 col-lg-8 m-auto">
-                        <form id="main-form" class="multisteps-form__form">
-                            <div id="single-form-next" class="multisteps-form__panel shadow p-4 rounded bg-white js-active" data-animation="scaleIn">
-                                <div id="form-content" class="multisteps-form__content">
-                                    <div id="input-grp-double" class="form-row mt-4"><input class="form-control multisteps-form__input" type="text" placeholder="Quiz name (eg:course name - quiz number)" name="quizname"></div>
-                                </div>
-                                <div id="form-content-3" class="multisteps-form__content">
-                                    <div id="input-grp-double-3" class="form-row mt-4">
-                                        <div class="col-12 col-sm-6"><input class="form-control" type="date" name="quizstartdate"></div>
-                                        <div class="col-12 col-sm-6 mt-4 mt-sm-0"><input class="form-control" type="time" name="quizstarttime"></div>
-                                    </div>
-                                </div>
-                                <div id="form-content" class="multisteps-form__content">
-                                    <div id="input-grp-double" class="form-row mt-4">
-                                        <div class="col-12 col-sm-6"><input class="form-control" type="date" name="quizenddate"></div>
-                                        <div class="col-12 col-sm-6 mt-4 mt-sm-0"><input class="form-control" type="time" name="quizendtime"></div>
-                                    </div>
-                                </div>
-                                <div></div><button class="btn btn-primary" type="button" style="margin-top: 10px;">CREATE</button>
-                            </div>
-                            <div id="single-form-next-prev" class="multisteps-form__panel shadow p-4 rounded bg-white" data-animation="scaleIn">
-                                <h3 class="text-center multisteps-form__title">About</h3>
-                                <div id="form-content-1" class="multisteps-form__content">
-                                    <div id="input-grp-double-1" class="form-row mt-4">
-                                        <div class="col-12 col-sm-6"><input class="form-control multisteps-form__input" type="text" placeholder="First name "></div>
-                                        <div class="col-12 col-sm-6 mt-4 mt-sm-0"><input class="form-control multisteps-form__input" type="text" placeholder="Last name "></div>
-                                    </div>
-                                    <div id="input-grp-single-1" class="form-row mt-4">
-                                        <div class="col-12"><input class="form-control multisteps-form__input" type="text" placeholder="House"></div>
-                                    </div>
-                                    <div id="next-prev-buttons" class="button-row d-flex mt-4"><button class="btn btn btn-primary js-btn-prev" type="button" title="Prev">Prev</button><button class="btn btn btn-primary ml-auto js-btn-next" type="button" title="Next">Next</button></div>
-                                </div>
-                            </div>
-                            <div id="single-form-next-prev-1" class="multisteps-form__panel shadow p-4 rounded bg-white" data-animation="scaleIn">
-                                <h3 class="text-center multisteps-form__title">About</h3>
-                                <div id="form-content-2" class="multisteps-form__content">
-                                    <div id="input-grp-double-2" class="form-row mt-4">
-                                        <div class="col-12 col-sm-6"><input class="form-control multisteps-form__input" type="text" placeholder="First name "></div>
-                                        <div class="col-12 col-sm-6 mt-4 mt-sm-0"><input class="form-control multisteps-form__input" type="text" placeholder="Last name "></div>
-                                    </div>
-                                    <div id="input-grp-single-2" class="form-row mt-4">
-                                        <div class="col-12"><input class="form-control multisteps-form__input" type="text" placeholder="House"></div>
-                                    </div>
-                                    <div id="next-prev-buttons-1" class="button-row d-flex mt-4"><button class="btn btn btn-primary js-btn-prev" type="button" title="Prev">Prev</button><button class="btn btn btn-primary ml-auto js-btn-next" type="button" title="Next">Next</button></div>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </section>
+        <input type="text" name="subject_filename" placeholder="filename"><br><br>
+        <div class="form-group files color"><input type="file" name="subject_file"></div>
     </div>
-    <div class="container"><small class="form-text text-muted d-xl-flex justify-content-xl-center" style="font-size: 36.8px;">CREATE QUESTIONS FOR QUIZ HERE</small></div>
-    <div class="container">
-        <div class="col">
-            <form class="custom-form" style="margin-bottom: 81px;"><small class="form-text text-muted">enter question here</small>
-                <div class="form-group"><textarea class="form-control"></textarea></div><small class="form-text text-muted">enter option and click on add</small><textarea class="form-control"></textarea><a class="d-xl-flex justify-content-xl-end" href="#">add this option</a>
-                <div class="form-check"><input class="form-check-input" type="radio" name="radio-option" id="formCheck-10"><label class="form-check-label" for="formCheck-10">Radio option 1</label></div><small class="form-text text-muted">enter answer here</small><textarea class="form-control" style="margin-bottom: 21px;"></textarea><button class="btn btn-light btn-block submit-button" type="button" style="border-color: rgb(48,59,166);background: rgb(108,174,224);">ADD THIS QUESTION</button>
-            </form>
-        </div>
-    </div>
-    <div class="container"><small class="form-text text-muted" style="font-size: 30.8px;text-align: center;">PREVIEW OF QUIZ</small></div>
-    <div class="row login-form">
-        <div class="col">
-            <div class="container" style="background: rgba(70,163,230,0.04);padding: 14px;">
-                <div class="row">
-                    <div class="col-md-12"><small class="form-text text-monospace text-break text-muted" style="font-size: 18.8px;background: rgba(70,163,230,0.1);padding: 30px;margin-top: 12px;">Who is revanth?</small></div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="form-check" style="padding-top: 5px;"><input class="form-check-input" type="radio" name="radio-option" checked="" id="formCheck-11"><label class="form-check-label text-break" for="formCheck-11">A topper</label></div>
-                        <div class="form-check" style="padding-top: 5px;"><input class="form-check-input" type="radio" name="radio-option" checked="" id="formCheck-6"><label class="form-check-label text-break" for="formCheck-11">A thope</label></div>
-                        <div class="form-check" style="padding-top: 5px;"><input class="form-check-input" type="radio" name="radio-option" checked="" id="formCheck-5"><label class="form-check-label text-break" for="formCheck-11">A hero</label></div>
-                        <div class="form-check" style="padding-top: 5px;"><input class="form-check-input" type="radio" name="radio-option" checked="" id="formCheck-11"><label class="form-check-label text-break" for="formCheck-11">All of the above</label></div>
-                    </div>
-                </div>
-            </div>
-            <div class="container" style="background: rgba(70,163,230,0.04);padding: 14px;">
-                <div class="row">
-                    <div class="col-md-12"><small class="form-text text-monospace text-break text-muted" style="font-size: 18.8px;background: rgba(70,163,230,0.1);padding: 30px;margin-top: 12px;">Who is revanth?..................jfuwegfuevfhevwfgvwehgvfervferhvfhegrfhevrhvfegvfherhvfervfhegfevfvehvfehgrfevhvferhvfervfhervfhevhfverhvfehvfevferhevrhfvehgvfhevferhverhvfevfervfehfvervfehgrvhevgfvrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr</small></div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="form-check" style="padding-top: 5px;"><input class="form-check-input" type="radio" name="radio-option" checked="" id="formCheck-1"><label class="form-check-label text-break" for="formCheck-11">A topper</label></div>
-                        <div class="form-check" style="padding-top: 5px;"><input class="form-check-input" type="radio" name="radio-option" checked="" id="formCheck-6"><label class="form-check-label text-break" for="formCheck-11">A thope</label></div>
-                        <div class="form-check" style="padding-top: 5px;"><input class="form-check-input" type="radio" name="radio-option" checked="" id="formCheck-5"><label class="form-check-label text-break" for="formCheck-11">A hero</label></div>
-                        <div class="form-check" style="padding-top: 5px;"><input class="form-check-input" type="radio" name="radio-option" checked="" id="formCheck-2"><label class="form-check-label text-break" for="formCheck-11">All of the above</label></div>
-                    </div>
-                </div>
-            </div>
-            <div class="container d-xl-flex justify-content-xl-end" style="margin-top: 90px;margin-bottom: 50px;"><a class="btn btn-success btn-icon-split" role="button"><span class="text-white-50 icon"><i class="fas fa-check"></i></span><span class="text-white text">CREATE AND SAVE QUIZ</span></a></div>
-        </div>
-    </div>
-    <script src="{% static 'LMSteacherdashboard/assets/js/jquery.min.js'%}"></script>
+    <div class="container d-xl-flex justify-content-xl-end"><button type="submit" class="btn btn-warning btn-icon-split" role="button"><span class="text-white-50 icon"><i class="fas fa-plus"></i></span><span class="text-white text">add this file</span></button></div>
+    </form>
+
+        <script src="{% static 'LMSteacherdashboard/assets/js/jquery.min.js'%}"></script>
     <script src="{% static 'LMSteacherdashboard/assets/bootstrap/js/bootstrap.min.js'%}"></script>
     <script src="{% static 'LMSteacherdashboard/assets/js/bs-init.js'%}"></script>
     <script src="{% static 'LMSteacherdashboard/assets/js/Button-modal-ecommerce.js'%}"></script>

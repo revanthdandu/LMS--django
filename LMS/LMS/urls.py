@@ -24,8 +24,9 @@ urlpatterns = [
     path('teacher/',include('teacherdashboard.urls')),
     path('todo/', include('todo.urls')),
     path('timetables/', include('timetables.urls')),
-    path('attendance/', include('createfolder.urls')),
+    # path('attendance/', include('createfolder.urls')),
     path('subjectcontrol/', include('subjectcontrol.urls')),
+    path('student/',include('studentdashboard.urls')),
 ]
 
 if settings.DEBUG:

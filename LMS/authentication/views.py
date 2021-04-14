@@ -40,6 +40,8 @@ class Login(View):
             login(request, user)
             if user.profile.designation == 'faculty':
                 return redirect('teacherdashboard')
+            if user.profile.designation == 'student':
+                return redirect('studentdashboard')
         else:
             return redirect('login')
 

@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.views import View
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Notes, NotesFiles
-from .models import Assignments
+from .models import Assignments, AssignmentsFiles
 
 
 
@@ -71,4 +71,26 @@ class NotesUpload(LoginRequiredMixin, View):
 
         return redirect('subjectcontrol')
 
+
+
+class AssignmentsUpload(LoginRequiredMixin, View):
+
+
+    login_url = ''
+    redirect_field_name = 'redirect_to'
+
+    def get(self, request, pk):
+        return render(request, 'LMSteacherdashboard/addfilesassign.html')
+
+    def post(self, request, pk):
+        assignment = Assignments.objects.get(id=pk)
+        assignment_filename = request.POST['subject_filename']
+        file = request.FILES['subject_file']
+        AssignmentsFiles.objects.create(
+            assignment=assignment,
+            file=file,
+            name=assignment_filename,
+        )
+
+        return redirect('subjectcontrol')
 
