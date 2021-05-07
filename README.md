@@ -1,1 +1,2 @@
-# LMS(University Managemant System) --> http://lmssite.pythonanywhere.com/
+# LMS(University Managemant System)
+http://lmssite.pythonanywhere.com/
