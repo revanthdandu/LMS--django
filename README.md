@@ -21,3 +21,9 @@ http://lmssite.pythonanywhere.com/
 #
 # Student Dashboard
 ![image](https://user-images.githubusercontent.com/59868534/121894572-e940c500-cd3c-11eb-8259-166e5086deb3.png)
+#
+# Admin Page
+![image](https://user-images.githubusercontent.com/59868534/121894777-286f1600-cd3d-11eb-9bc7-d69aea699169.png)
+#
+# Adding user profiles
+![image](https://user-images.githubusercontent.com/59868534/121894899-4b99c580-cd3d-11eb-849e-914140a4ef79.png)
